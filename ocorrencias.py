@@ -130,10 +130,10 @@ def menu_ocorrencias(caminho_arq, lista_ocorrencias, count):
                 print("Não existem ocorrências com a palavra ", titulo, "!")
         elif opcao == 9:
             print("Mostrar Log")
-            posicao_log = buscar_log(lista_log, titulo_log)
+            posicao_log = buscar_log(lista_log)
             if posicao_log != -1:
                 print("***Log Encontrado!***")
-                logzin = buscar_log(lista_log, titulo_log)
+                logzin = buscar_log(lista_log)
                 print(logzin)
             else:
                 print("Log não encontrado!")
@@ -209,12 +209,11 @@ def buscar_ocorrencia(lista_ocorrencias, titulo):
         return -1
 
 
-def buscar_log(lista_log, titulo_log):
+def buscar_log(lista_log):
     tamanho_log = len(lista_log)
     if tamanho_log > 0:
         for i in lista_log:
-            if titulo_log in i:
-                return i
+            return i
         return -1
     else:
         return -1
