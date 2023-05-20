@@ -1,0 +1,84 @@
+Id:1
+Título:q
+Descrição:q
+Implicações:q
+Status:não
+Data de inclusão:45
+Prazo (em dias):34
+Id:3
+Título:w
+Descrição:w
+Implicações:w
+Status:não
+Data de inclusão:209/32
+Prazo (em dias):13
+Id:7
+Título:1
+Descrição:1
+Implicações:1
+Status:não
+Data de inclusão:10/05/2004
+Prazo (em dias):50
+Id:15
+Título:1
+Descrição:1
+Implicações:1
+Status:sim
+Data de inclusão:10/03/2003
+Prazo (em dias):100
+Id:48
+Título:1
+Descrição:1
+Implicações:1
+Status:sim
+Data de inclusão:15/04/2002
+Prazo (em dias):150
+Id:97
+Título:1
+Descrição:1
+Implicações:1
+Status:sim
+Data de inclusão:15/04/2023
+Prazo (em dias):250
+Id:98
+Título:2
+Descrição:2
+Implicações:2
+Status:não
+Data de inclusão:20/03/2023
+Prazo (em dias):140
+Id:277
+Título:3
+Descrição:3
+Implicações:3
+Status:sim
+Data de inclusão:20/05/2023
+Prazo (em dias):2
+Id:555
+Título:1
+Descrição:1
+Implicações:1
+Status:sim
+Data de inclusão:20/03/2002
+Prazo (em dias):150
+Id:556
+Título:2
+Descrição:2
+Implicações:2
+Status:não
+Data de inclusão:25/06/2022
+Prazo (em dias):250
+Id:557
+Título:3
+Descrição:3
+Implicações:3
+Status:sim
+Data de inclusão:30/01/2001
+Prazo (em dias):1004
+Id:558
+Título:4
+Descrição:4
+Implicações:4
+Status:não
+Data de inclusão:20/04/2023
+Prazo (em dias):50

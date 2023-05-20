@@ -1,0 +1,4 @@
+Log - 18/05/2023 20:48 - [Cadastro] Foi cadastrado a ocorrência: {'id': 555, 'titulo': '1', 'descricao': '1', 'implicacoes': '1', 'status': True, 'data': '20/03/2002', 'prazo': 150}
+Log - 18/05/2023 20:48 - [Cadastro] Foi cadastrado a ocorrência: {'id': 556, 'titulo': '2', 'descricao': '2', 'implicacoes': '2', 'status': False, 'data': '25/06/2022', 'prazo': 250}
+Log - 18/05/2023 20:49 - [Cadastro] Foi cadastrado a ocorrência: {'id': 557, 'titulo': '3', 'descricao': '3', 'implicacoes': '3', 'status': True, 'data': '30/01/2001', 'prazo': 1004}
+Log - 18/05/2023 20:49 - [Cadastro] Foi cadastrado a ocorrência: {'id': 558, 'titulo': '4', 'descricao': '4', 'implicacoes': '4', 'status': False, 'data': '20/04/2023', 'prazo': 50}
