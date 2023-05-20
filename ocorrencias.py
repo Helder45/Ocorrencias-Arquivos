@@ -24,7 +24,7 @@ def carrega_senha():
     return nome, senha
         
 
-def autenticar(caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inserida):
+def autenticar(lista_log, caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inserida):
     nome_arquivo, senha_arquivo = carrega_senha()
     lista_login, lista_senha = transforma_str_ascii(nome_inserido, senha_inserida)
     lista_nome_arquivo = nome_arquivo.split()
@@ -70,7 +70,7 @@ def menu_ocorrencias(caminho_arq, lista_ocorrencias, count):
             posicao = buscar_ocorrencia(lista_ocorrencias, titulo)
             if posicao != -1:
                 print("***Ocorrência Encontrada!***")
-                carregar_ocorrencias(count)
+                carregar_ocorrencias()
             else:
                 print("Ocorrência não encontrada!")
         elif opcao == 5:
@@ -307,12 +307,13 @@ def grava_log(backup, log_msg, ocorrencia):
 
 count = 0
 lista_ocorrencias = []
+lista_log = []
 caminho_pass_key = "pass_keys.txt"
 caminho_arq = "ocorrencias.txt"
 log_file_path = "log.txt"
 
 print("##########Login##########")
-meu_nome = input("Digite seu nome: ")
+meu_nome = input("Digite seu e-mail: ")
 minha_senha = input("Digite sua senha: ")
 print("##########################")
-autenticar(caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha)
+autenticar(lista_log, caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha)
