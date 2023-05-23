@@ -24,7 +24,7 @@ def carrega_senha():
     return nome, senha
         
 
-def autenticar(lista_log, caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inserida):
+def autenticar(caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inserida, lista_log):
     nome_arquivo, senha_arquivo = carrega_senha()
     lista_login, lista_senha = transforma_str_ascii(nome_inserido, senha_inserida)
     lista_nome_arquivo = nome_arquivo.split()
@@ -33,13 +33,13 @@ def autenticar(lista_log, caminho_arq, lista_ocorrencias, count, nome_inserido, 
 
     if lista_nome_arquivo == lista_login and lista_senha_arquivo == lista_senha:
         lista_ocorrencias, count = carregar_ocorrencias()
-        lista_log = carrega_log()
-        menu_ocorrencias(caminho_arq, lista_ocorrencias, count)
+        lista_log = carrega_log(lista_log)
+        menu_ocorrencias(caminho_arq, lista_ocorrencias, count, lista_log)
     else:
         print("Senha ou Login Incorreto(s)!")
 
 
-def menu_ocorrencias(caminho_arq, lista_ocorrencias, count):
+def menu_ocorrencias(caminho_arq, lista_ocorrencias, count, lista_log):
     opcao = 1
     while opcao != 0:
         print("---Menu de Ocorrências---")
@@ -129,12 +129,11 @@ def menu_ocorrencias(caminho_arq, lista_ocorrencias, count):
             else:
                 print("Não existem ocorrências com a palavra ", titulo, "!")
         elif opcao == 9:
-            print("Mostrar Log")
-            posicao_log = buscar_log(lista_log)
-            if posicao_log != -1:
-                print("***Log Encontrado!***")
-                logzin = buscar_log(lista_log)
-                print(logzin)
+            print("Logs do Sistema!")
+            lista_log = buscar_log(lista_log)
+            if lista_log != None:
+                print("***Logs Encontrados!***")
+                print(buscar_log(lista_log))
             else:
                 print("Log não encontrado!")
         elif opcao == 0:
@@ -209,14 +208,20 @@ def buscar_ocorrencia(lista_ocorrencias, titulo):
         return -1
 
 
+def carrega_log(lista_log):
+    with open(log_file_path, "r", encoding="utf-8") as arquivo:
+        for linha in arquivo:
+            lista_log.append(linha[:len(linha)-1])
+
+    return lista_log
+
+
 def buscar_log(lista_log):
     tamanho_log = len(lista_log)
     if tamanho_log > 0:
-        for i in lista_log:
-            return i
-        return -1
+        return lista_log
     else:
-        return -1
+        return None
 
 def buscar_ocorrencia_mes(lista_ocorrencias, mes):
     tamanho = len(lista_ocorrencias)
@@ -282,15 +287,6 @@ def carregar_ocorrencias():
     return lista_ocorrencias, count
 
 
-def carrega_log():
-    with open(log_file_path, "r", encoding="utf-8") as arquivo:
-        lista_log = []
-        for linha in arquivo:
-            lista_log.append(linha)
-
-    return lista_log
-
-
 def grava_log(backup, log_msg, ocorrencia):
     data_e_hora_atuais = datetime.now()
     data_e_hora_em_texto = data_e_hora_atuais.strftime("%d/%m/%Y %H:%M")
@@ -315,4 +311,4 @@ print("##########Login##########")
 meu_nome = input("Digite seu e-mail: ")
 minha_senha = input("Digite sua senha: ")
 print("##########################")
-autenticar(lista_log, caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha)
+autenticar(caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha, lista_log)

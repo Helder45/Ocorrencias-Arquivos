@@ -16,7 +16,7 @@ Id:7
 Título:1
 Descrição:1
 Implicações:1
-Status:não
+Status:sim
 Data de inclusão:10/05/2004
 Prazo (em dias):50
 Id:15
@@ -82,3 +82,24 @@ Implicações:4
 Status:não
 Data de inclusão:20/04/2023
 Prazo (em dias):50
+Id:2785
+Título:1
+Descrição:1
+Implicações:1
+Status:sim
+Data de inclusão:10/05/2023
+Prazo (em dias):15
+Id:5571
+Título:1
+Descrição:1
+Implicações:1
+Status:não
+Data de inclusão:12/23/2333
+Prazo (em dias):4141
+Id:11143
+Título:Incëndio
+Descrição:Ocorreu um incendio
+Implicações:morte e casa queimada
+Status:não
+Data de inclusão:19/03/2023
+Prazo (em dias):15
