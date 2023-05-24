@@ -30,6 +30,7 @@ def autenticar(caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inser
     lista_nome_arquivo = nome_arquivo.split()
     lista_senha_arquivo = senha_arquivo.split()
 
+    print("\nNome no arquivo: ", lista_nome_arquivo, "\nSenha no arquivo: ", lista_senha_arquivo , "\nNome digitado: ", lista_login, "\nSenha digitada: ", lista_senha)
 
     if lista_nome_arquivo == lista_login and lista_senha_arquivo == lista_senha:
         lista_ocorrencias, count = carregar_ocorrencias()
@@ -307,7 +308,9 @@ caminho_pass_key = "pass_keys.txt"
 caminho_arq = "ocorrencias.txt"
 log_file_path = "log.txt"
 
-print("##########Login##########")
+print("\nSeja bem-vindo ao Galaxy News!")
+print("\n<<<Para que possa entrar no sistema, faça o login abaixo>>>")
+print("\n##########Login##########")
 meu_nome = input("Digite seu e-mail: ")
 minha_senha = input("Digite sua senha: ")
 print("##########################")
