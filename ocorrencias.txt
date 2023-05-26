@@ -75,13 +75,6 @@ Implicações:3
 Status:sim
 Data de inclusão:30/01/2001
 Prazo (em dias):1004
-Id:558
-Título:4
-Descrição:4
-Implicações:4
-Status:não
-Data de inclusão:20/04/2023
-Prazo (em dias):50
 Id:2785
 Título:1
 Descrição:1

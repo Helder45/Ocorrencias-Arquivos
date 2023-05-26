@@ -37,7 +37,7 @@ def autenticar(caminho_arq, lista_ocorrencias, count, nome_inserido, senha_inser
         lista_log = carrega_log(lista_log)
         menu_ocorrencias(caminho_arq, lista_ocorrencias, count, lista_log)
     else:
-        print("Senha ou Login Incorreto(s)!")
+        print("Senha ou Usuário errado(s).")
 
 
 def menu_ocorrencias(caminho_arq, lista_ocorrencias, count, lista_log):
@@ -187,6 +187,40 @@ def listagem_ativas(lista_ocorrencias):
         print("Não existem ocorrências cadastradas.")
 
 
+def menu_inicial(caminho_arq, lista_ocorrencias, count, lista_log, lista_visitantes):
+    opcao_menu = 1
+    while opcao_menu != 0:
+        print("<<<Sistema de Ocorrências>>>")
+        print("1 - Acesso Admin.")
+        print("2 - Visitante.")
+        opcao_menu = int(input("Digite a opção: "))
+        if opcao_menu == 1:
+            print("Redirecionando...")
+            print("\n##########Login##########")
+            meu_nome = input("Digite seu e-mail: ")
+            minha_senha = input("Digite sua senha: ")
+            print("##########################")
+            autenticar(caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha, lista_log)
+        elif opcao_menu == 2:
+            print("Acesso Visitante.")
+            grava_visitante(lista_visitantes, lista_ocorrencias)
+            break
+    
+
+def grava_visitante(lista_visitantes, lista_ocorrencias):
+    data_e_hora_atuais = datetime.now()
+    data_e_hora_em_texto = data_e_hora_atuais.strftime("%d/%m/%Y %H:%M")
+
+    nome = input("Digite seu nome: ")
+    email = input("Digite seu email: ")
+
+    with open(visitantes_file, "a", encoding="utf-8") as visitantes:
+        visitantes.write(data_e_hora_em_texto + " " + nome + " " + email + "\n")
+
+    lista_ocorrencias, count = carregar_ocorrencias()
+    listagem(lista_ocorrencias)
+
+
 def impressao_ocorrencia(ocorrencia, i):
     print("###Ocorrência ", i + 1, "###")
     print("Id:", ocorrencia["id"])
@@ -215,6 +249,22 @@ def carrega_log(lista_log):
             lista_log.append(linha[:len(linha)-1])
 
     return lista_log
+
+
+def carrega_visitantes(lista_visitantes):
+    with open(visitantes_file, "r", encoding="utf-8") as visitantes:
+        for linha in visitantes:
+            lista_visitantes.append(linha[:len(linha)-1])
+
+    return lista_visitantes
+
+
+def buscar_visitantes(lista_visitantes):
+    tamanho_visitantes = len(lista_visitantes)
+    if tamanho_visitantes > 0:
+        return lista_visitantes
+    else:
+        return None
 
 
 def buscar_log(lista_log):
@@ -299,19 +349,18 @@ def grava_log(backup, log_msg, ocorrencia):
         elif log_msg == "Alteração":
             log_file.write("Log - " + data_e_hora_em_texto + " - [" + log_msg + "] Foi alterada a ocorrência, de" + backup + " para: " + str(ocorrencia) + "\n")
 
+
 ################execução################
 
 count = 0
 lista_ocorrencias = []
 lista_log = []
+lista_visitantes = []
 caminho_pass_key = "pass_keys.txt"
 caminho_arq = "ocorrencias.txt"
 log_file_path = "log.txt"
+visitantes_file = "visitantes.txt"
 
 print("\nSeja bem-vindo ao Galaxy News!")
 print("\n<<<Para que possa entrar no sistema, faça o login abaixo>>>")
-print("\n##########Login##########")
-meu_nome = input("Digite seu e-mail: ")
-minha_senha = input("Digite sua senha: ")
-print("##########################")
-autenticar(caminho_arq, lista_ocorrencias, count, meu_nome, minha_senha, lista_log)
+menu_inicial(caminho_arq, lista_ocorrencias, count, lista_log, lista_visitantes)
